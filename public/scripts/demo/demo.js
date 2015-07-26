@@ -1,15 +1,15 @@
 ;(function() {
   'use strict';
 
-  var glassesDemoSelector = '#glasses-demo';
+  var glassesDemoSelector = '#glasses-canvas-container';
   var glassesDemoOptions = {
-    width: Math.min(640, $("#glasses-demo").width()),
+    width: Math.min(640, $(glassesDemoSelector).width()),
     HeightWidthratio: 9 / 16,
     url: "/images/glasses/blackglasses",
     prefix: "blackglasses"
   };
 
-  var canvasRotation = new CanvasRotation("#glasses-demo", glassesDemoOptions);
+  var canvasRotation = new CanvasRotation(glassesDemoSelector, glassesDemoOptions);
 
   $(".glasses-selector").on("click", ".glass-box", function() {
     var target = $(this).data("target");
