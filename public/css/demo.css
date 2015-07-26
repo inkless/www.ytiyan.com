@@ -20,3 +20,14 @@ header {
 
 #content #glasses-demo {
   text-align: center; }
+
+#content .glasses-selector {
+  border-top: 1px solid #CC771E;
+  padding-top: 20px;
+  text-align: center; }
+  #content .glasses-selector .glass-box {
+    display: block;
+    width: 100%;
+    overflow: hidden; }
+    #content .glasses-selector .glass-box img {
+      width: 100%; }

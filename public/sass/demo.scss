@@ -33,4 +33,20 @@ header {
   #glasses-demo {
     text-align: center;
   }
+
+  .glasses-selector {
+    border-top: 1px solid #CC771E;
+    padding-top: 20px;
+    text-align: center;
+
+    .glass-box {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
 }

@@ -10,6 +10,11 @@
   };
 
   var canvasRotation = new CanvasRotation("#glasses-demo", glassesDemoOptions);
-  canvasRotation.load();
+
+  $(".glasses-selector").on("click", ".glass-box", function() {
+    var target = $(this).data("target");
+
+    canvasRotation.setPath("/images/glasses/" + target, target);
+  });
 
 })();

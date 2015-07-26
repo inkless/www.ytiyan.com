@@ -26,8 +26,7 @@
   };
 
   CanvasRotation.prototype._init = function() {
-    this.path = this.options.url + '/' + this.options.prefix;
-    this.images = preloadImages.call(this);
+    this.setPath(this.options.url, this.options.prefix);
 
     // calc gap
     this.middlePoint = Math.floor(parseInt(this.options.width) / 2);
@@ -37,8 +36,9 @@
     this.ctx = this.canvas.getContext("2d");
   };
 
-  CanvasRotation.prototype.load = function() {
-    this.draw(0);
+  CanvasRotation.prototype.setPath = function(url, prefix) {
+    this.path = url + '/' + prefix;
+    this.images = preloadImages.call(this);
   };
 
   CanvasRotation.prototype.draw = function(index) {
