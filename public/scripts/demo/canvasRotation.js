@@ -30,8 +30,7 @@
     this.images = preloadImages.call(this);
 
     // calc gap
-    this.middlePoint = Math.floor(parseInt(this.options.width) / 2)
-      + this.$container[0].getBoundingClientRect().left;
+    this.middlePoint = Math.floor(parseInt(this.options.width) / 2);
     this.gap = Math.floor(parseInt(this.options.width) / 36);
 
     this.canvas = appendCanvas.call(this);
@@ -57,6 +56,7 @@
 
     // expose this variable to local variables
     var me = this;
+    var offsetLeft = canvas.getBoundingClientRect().left;
 
     // add events to canvas
     $canvas.on(mouseMoveEvent, function(e) {
@@ -66,7 +66,7 @@
       } else {
         clientX = e.originalEvent.clientX;
       }
-      var index = Math.floor((clientX - me.middlePoint) / me.gap);
+      var index = Math.floor((clientX - me.middlePoint - offsetLeft) / me.gap);
       console.log(index)
       me.draw(index);
     });
