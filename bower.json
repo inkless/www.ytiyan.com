@@ -1,0 +1,22 @@
+{
+  "name": "www.ytiyan.com",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/inkless/www.ytiyan.com",
+  "authors": [
+    "Guangda Zhang <zhangxiaoyu9350@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "1.11.3",
+    "ionicons": "~2.0.1"
+  }
+}

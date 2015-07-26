@@ -1,0 +1,26 @@
+# Logs
+logs
+*.log
+
+.settings
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+/build
+/dist
+
+# Dependency directory
+# Deployed apps should consider commenting this line out:
+# see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
+node_modules
+public/vendor
+
+# Node Environment
+.env
+
+# Ignore .DS_Store files on OS X
+.DS_Store

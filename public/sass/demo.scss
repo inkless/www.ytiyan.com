@@ -1,0 +1,36 @@
+.text-right {
+    text-align: right;
+}
+
+header {
+  background-color: #48A5FF;
+  color: #FFF;
+  padding-top: 20px;
+  padding-bottom: 12px;
+
+  .head-title {
+    margin-left: 15px;
+  }
+
+  .menu-links {
+    padding-top: 5px;
+
+    a {
+      font-size: 30px;
+      color: #FFF;
+      font-weight: 900;
+      margin: 15px;
+    }
+  }
+  .logo-wrapper {
+    img {
+      max-height: 35px;
+    }
+  }
+}
+
+#content {
+  #glasses-demo {
+    text-align: center;
+  }
+}
