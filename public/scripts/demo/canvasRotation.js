@@ -30,7 +30,8 @@
     this.images = preloadImages.call(this);
 
     // calc gap
-    this.middlePoint = Math.floor(parseInt(this.options.width) / 2);
+    this.middlePoint = Math.floor(parseInt(this.options.width) / 2)
+      + this.$container[0].getBoundingClientRect().left;
     this.gap = Math.floor(parseInt(this.options.width) / 36);
 
     this.canvas = appendCanvas.call(this);
@@ -59,7 +60,14 @@
 
     // add events to canvas
     $canvas.on(mouseMoveEvent, function(e) {
-      var index = Math.floor((e.offsetX - me.middlePoint) / me.gap);
+      var clientX;
+      if (isTouchable) {
+        clientX = e.originalEvent.touches[0].clientX;
+      } else {
+        clientX = e.originalEvent.clientX;
+      }
+      var index = Math.floor((clientX - me.middlePoint) / me.gap);
+      console.log(index)
       me.draw(index);
     });
 
