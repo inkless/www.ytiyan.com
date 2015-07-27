@@ -43,7 +43,7 @@
 
   // show demo avatar
   drawImageInCanvas(DEMO_AVATAR, function() {
-    yData.avatar = canvas;
+    saveBlob(canvas);
   });
 
   // handle btn show
@@ -65,13 +65,21 @@
       options = $.extend(loadImageOptions, options);
 
       loadImage(file, function(hiddenCanvas) {
-        yData.avatar = hiddenCanvas;
+        saveBlob(hiddenCanvas);
         drawImageInCanvas(hiddenCanvas.toDataURL());
       }, options);
 
     });
 
   });
+
+  function saveBlob(canvas) {
+    if (canvas.toBlob) {
+      canvas.toBlob(function(blob) {
+        yData.avatar = blob;
+      }, 'image/jpeg');
+    }
+  }
 
   function clearCanvas() {
     ctx.clearRect (0, 0, canvas.width, canvas.height);
@@ -146,6 +154,9 @@
     prefix: "blackglasses"
   };
 
+  // choose default glasses
+  yData.glasses = "blackglasses";
+
   var canvasRotation = new CanvasRotation(glassesDemoSelector, glassesDemoOptions);
 
   $(".glasses-selector").on("click", ".glass-box", function() {
@@ -157,5 +168,37 @@
     var target = $(this).data("target");
     canvasRotation.setPath("/images/glasses/" + target, target);
   });
+
+  // submit data
+  $("#submit-btn").on("click", submitData);
+
+  function submitData() {
+    var formData = new FormData();
+
+    formData.append('image', yData.avatar, 'avatar.jpg');
+    formData.append('glasses', yData.glasses);
+    formData.append('token', '123$Demo');
+
+    $.ajax({
+      url: "/api/try-on",
+      type: "POST",
+      dataType: "json",
+      cache: false,
+      processData: false,
+      contentType: false,
+      data: formData,
+      success: function(data) {
+        console.log(data);
+        // loadImage()
+      },
+      error: function(xhr) {
+        if (xhr.responseJSON) {
+          alert(xhr.responseJSON.message);
+        } else {
+          alert('System error!');
+        }
+      }
+    });
+  }
 
 })();

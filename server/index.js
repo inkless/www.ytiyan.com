@@ -1,10 +1,13 @@
-import express from 'express';
-import routes from './routes';
+// load env first
+require('dotenv').load();
 
-const STATIC_DIR = "public";
-const PORT = 3000;
+var express = require('express');
+var routes = require('./routes');
 
-let app = express();
+var STATIC_DIR = "public";
+var PORT = 3000;
+
+var app = express();
 
 // Serve public folder
 app.use(express.static(STATIC_DIR, {
@@ -25,6 +28,6 @@ app.use(function(err, req, res, next) {
 });
 
 // start server
-app.listen(PORT, () => {
+app.listen(PORT, function() {
   console.log('Server started at  http://localhost:%s', PORT);
 });

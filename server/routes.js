@@ -1,15 +1,18 @@
-import express from 'express';
+var express = require('express');
+var api = require('./api');
 
-const STATIC_DIR = "public";
-let router = express.Router();
+var STATIC_DIR = "public";
+var router = express.Router();
 
 // serve /
-router.get('/', (req, res) => {
+router.get('/', function(req, res) {
   res.sendFile('index.html', { root: STATIC_DIR });
 });
 // serve demo
-router.get('/demo', (req, res) => {
+router.get('/demo', function(req, res) {
   res.sendFile('demo.html', { root: STATIC_DIR });
 });
+//serve api
+router.use('/api', api);
 
-export default router;
+module.exports = router;
