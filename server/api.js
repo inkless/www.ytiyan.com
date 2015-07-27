@@ -2,12 +2,13 @@ var express = require('express');
 var request = require('request');
 var fs = require('fs');
 var multer  = require('multer');
+var path = require('path');
 
 var MAX_IMAGE_SIZE = 1048576; // 1024 * 1024
 var TOKEN = '123$Demo';
 
 var router = express.Router();
-var upload = multer({dest: 'uploads/'});
+var upload = multer({dest: path.join(__dirname, '../uploads/')});
 
 router.post('/try-on', upload.fields([{
   name: 'image'}, {name: 'token'}, {name: 'glasses'
