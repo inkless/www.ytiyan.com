@@ -154,6 +154,11 @@ header {
 
 }
 
+#result-canvas-container {
+  text-align: center;
+  padding-top: 20px;
+}
+
 .line-sep {
   @include line-sep();
 }

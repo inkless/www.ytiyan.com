@@ -179,25 +179,37 @@
     formData.append('glasses', yData.glasses);
     formData.append('token', '123$Demo');
 
-    $.ajax({
-      url: "/api/try-on",
-      type: "POST",
-      dataType: "json",
-      cache: false,
-      processData: false,
-      contentType: false,
-      data: formData,
-      success: function(data) {
-        console.log(data);
-        // loadImage()
-      },
-      error: function(xhr) {
-        if (xhr.responseJSON) {
-          alert(xhr.responseJSON.message);
-        } else {
-          alert('System error!');
+    fetchBlob("/api/try-on", formData, function(blob) {
+      rockImage(blob);
+    });
+  }
+
+  function fetchBlob(uri, formData, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', uri, true);
+    xhr.responseType = 'blob';
+
+    xhr.onload = function(e) {
+      if (this.status == 200) {
+        var blob = this.response;
+        if (callback) {
+          callback(blob);
         }
       }
+    };
+    xhr.send(formData);
+  }
+
+  function rockImage(blob) {
+    var container = $("#result-canvas-container"),
+      containerWidth = container.width();
+
+    loadImage(blob, function(canvas) {
+      container.empty().append(canvas);
+    }, {
+      canvas: true,
+      maxWidth: containerWidth,
+      maxHeight: containerWidth
     });
   }
 

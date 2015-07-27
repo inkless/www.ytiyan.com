@@ -88,6 +88,10 @@ header {
     #pick-glasses .glasses-selector .glass-box img {
       width: 100%; }
 
+#result-canvas-container {
+  text-align: center;
+  padding-top: 20px; }
+
 .line-sep {
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
 

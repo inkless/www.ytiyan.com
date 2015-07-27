@@ -2,13 +2,12 @@ var express = require('express');
 var request = require('request');
 var fs = require('fs');
 var multer  = require('multer');
-var path = require('path');
 
 var MAX_IMAGE_SIZE = 1048576; // 1024 * 1024
 var TOKEN = '123$Demo';
 
 var router = express.Router();
-var upload = multer({dest: path.join(__dirname, '../uploads/')});
+var upload = multer({dest: process.env.IMAGES_UPLOAD_PATH});
 
 router.post('/try-on', upload.fields([{
   name: 'image'}, {name: 'token'}, {name: 'glasses'
@@ -27,14 +26,20 @@ function tryOn(req, res, next) {
   if (!req.files || !req.files.image || !req.files.image[0]) {
     return next(new Error("Please upload valid image."));
   }
-  
+
   var image = req.files.image[0];
 
   if (image.size > MAX_IMAGE_SIZE) {
     return next(new Error("File size limit to 1 MB."));
   }
 
-  var outputName = process.env.IMAGES_PATH;
+  if (process.env.NODE_ENV === "development") {
+    res.contentType('image/jpeg');
+    res.sendFile(image.path);
+    return;
+  }
+
+  var outputName = process.env.IMAGES_OUTPUT_PATH;
 
   fs.readFile(image.path, function(err, data) {
     if (err) {
@@ -48,7 +53,8 @@ function tryOn(req, res, next) {
       output: outputName,
       glasses: req.body.glasses
     }, function(img) {
-      res.send(img);
+      res.contentType('image/jpeg');
+      res.sendFile(outputName);
     }, function(err) {
       return next(new Error("process fail"));
     });
