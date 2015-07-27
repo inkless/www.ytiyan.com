@@ -166,6 +166,7 @@
 
     // set glasses path
     var target = $(this).data("target");
+    yData.glasses = target;
     canvasRotation.setPath("/images/glasses/" + target, target);
   });
 
