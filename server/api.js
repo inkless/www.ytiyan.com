@@ -53,7 +53,7 @@ function tryOn(req, res, next) {
       output: outputName,
       glasses: req.body.glasses
     }, function() {
-      if (fs.existsSync(output)) {
+      if (fs.existsSync(outputName)) {
         res.contentType('image/jpeg');
         res.sendFile(outputName);
       } else {
