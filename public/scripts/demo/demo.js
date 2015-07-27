@@ -4,6 +4,23 @@
 ;(function() {
   'use strict';
 
+  window.yData = {};
+
+  var sectionHeight = $(window).height() - 80;
+  $("section .container").css("height", sectionHeight);
+
+  $(".action-area").on("click", "button", function() {
+    var $this = $(this),
+      sel = $this.data("target"),
+      direction = $this.data("action");
+
+    if (direction === "left") {
+      $(sel).addClass(direction);
+    } else {
+      $(sel).removeClass("left");
+    }
+
+  });
 })();
 
 /**
@@ -12,9 +29,12 @@
 ;(function() {
   'use strict';
 
-  var DEMO_AVATR = "/images/glasses/avatar/1.jpg";
+  var DEMO_AVATAR = "/images/glasses/avatar/1.jpg";
+  var CANVAS_WIDTH_HEIGHT_RATIO = 1;
 
   var canvasContainer = $(".photo-box"),
+    canvas = canvasContainer.find("canvas")[0],
+    ctx = canvas.getContext("2d"),
     containerWidth = canvasContainer.width(),
     loadImageOptions = {
       maxWidth: containerWidth,
@@ -22,9 +42,9 @@
     };
 
   // show demo avatar
-  loadImage(DEMO_AVATR, function(canvas) {
-    canvasContainer.append(canvas);
-  }, loadImageOptions);
+  drawImageInCanvas(DEMO_AVATAR, function() {
+    yData.avatar = canvas;
+  });
 
   // handle btn show
   $("#imageInput").on("change", function(e) {
@@ -44,13 +64,70 @@
 
       options = $.extend(loadImageOptions, options);
 
-      loadImage(file, function(canvas) {
-        canvasContainer.empty().append(canvas);
+      loadImage(file, function(hiddenCanvas) {
+        yData.avatar = hiddenCanvas;
+        drawImageInCanvas(hiddenCanvas.toDataURL());
       }, options);
 
     });
 
   });
+
+  function clearCanvas() {
+    ctx.clearRect (0, 0, canvas.width, canvas.height);
+  }
+
+  function scaleRatio(width, height) {
+    var imgWidthHeightRatio = width / height;
+    // for wide image, we need to test width
+    if (imgWidthHeightRatio > CANVAS_WIDTH_HEIGHT_RATIO) {
+      if (width > containerWidth) {
+        var ratio = width / containerWidth;
+        return {
+          width: containerWidth,
+          height: height / ratio,
+          ratio: ratio
+        };
+      }
+    }
+    // for narrow image, we need to test height
+    else {
+
+      if (height > containerWidth) {
+        var ratio = height / containerWidth;
+        return {
+          width: width / ratio,
+          height: containerWidth,
+          ratio: ratio
+        };
+      }
+    }
+
+    return {
+      width: width,
+      height: height,
+      ratio: 1
+    };
+  }
+
+  function drawImageInCanvas(src, success) {
+    var img = new Image();
+    img.onload = function() {
+      var scaleObj = scaleRatio(this.width, this.height);
+
+      canvas.width = scaleObj.width;
+      canvas.height = scaleObj.height;
+
+      if (scaleObj.ratio === 1) {
+        ctx.drawImage(img, 0, 0);
+      } else {
+        ctx.drawImage(img, 0, 0, scaleObj.width, scaleObj.height);
+      }
+
+      success && success(scaleObj, img);
+    };
+    img.src = src;
+  }
 
 })();
 

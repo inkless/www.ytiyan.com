@@ -1,4 +1,5 @@
 import express from 'express';
+import routes from './routes';
 
 const STATIC_DIR = "public";
 const PORT = 3000;
@@ -11,13 +12,16 @@ app.use(express.static(STATIC_DIR, {
 }));
 
 // Adding router here
-// serve /
-app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: STATIC_DIR });
-});
-// serve demo
-app.get('/demo', (req, res) => {
-  res.sendFile('demo.html', { root: STATIC_DIR });
+app.use('/', routes);
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });
 
 // start server

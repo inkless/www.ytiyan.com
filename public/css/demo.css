@@ -1,14 +1,13 @@
 header {
   background-color: #48A5FF;
   color: #FFF;
-  padding-top: 12px;
-  padding-bottom: 12px; }
+  padding-top: 8px;
+  padding-bottom: 8px; }
   header .head-title {
-    text-align: center;
-    margin-top: 3px; }
+    text-align: center; }
     header .head-title span {
       line-height: 30px;
-      font-size: 26px; }
+      font-size: 22px; }
   header .menu-links {
     text-align: right;
     padding-right: 20px; }
@@ -18,19 +17,44 @@ header {
       font-weight: 900;
       line-height: 30px; }
   header .logo-wrapper img {
-    max-height: 35px; }
+    max-height: 30px; }
 
-#content {
-  padding: 10px; }
-  #content section {
-    margin-top: 10px;
-    margin-bottom: 20px;
+.slide-1 {
+  z-index: 10; }
+
+.slide-2 {
+  z-index: 5; }
+
+.slide-3 {
+  z-index: 0; }
+
+#content section {
+  width: 100%;
+  background: #FFF;
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  will-change: transform;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-transition: all 0.5s;
+          transition: all 0.5s; }
+  #content section .container {
+    position: relative;
+    overflow: hidden;
+    height: 500px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
-  #content .action-area {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    padding-top: 15px;
-    padding-bottom: 15px;
-    text-align: right; }
+  #content section.left {
+    -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0); }
+
+#content .action-area {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  position: absolute;
+  background-color: #FFF;
+  bottom: 0; }
 
 #choose-photo .upload-container {
   padding: 20px; }
@@ -40,7 +64,8 @@ header {
   padding-top: 20px; }
 
 #pick-glasses #glasses-canvas-container {
-  text-align: center; }
+  text-align: center;
+  padding-top: 30px; }
 
 #pick-glasses .glasses-selector {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -66,7 +91,15 @@ header {
 .card-header {
   text-align: center; }
   .card-header h2 {
-    margin-bottom: 15px; }
+    font-size: 2em; }
+  @media (max-width: 480px) {
+    .card-header h2 {
+      margin-top: 15px;
+      margin-bottom: 0;
+      font-size: 1.2em; } }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .card-header h2 {
+      font-size: 1.2em; } }
 
 .md-btn {
   display: inline-block;

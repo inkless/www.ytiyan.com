@@ -32,62 +32,87 @@
     </div>
   </header>
   <div id="content">
-    <section id="choose-photo" class="container">
-      <div class="row">
-        <div class="col-xs-12 card-header">
-          <h2>Choose Photo</h2>
-        </div>
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 upload-container">
-          <div class="input-group">
-            <div class="input-group-btn">
-              <span class="md-btn btn-file">
-                Browse file
-                <input type="file" name="image" id="imageInput" />
-              </span>
+    <section id="choose-photo" class="slide-1">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 card-header">
+            <h2>Choose Photo</h2>
+          </div>
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 upload-container">
+            <div class="input-group">
+              <div class="input-group-btn">
+                <span class="md-btn btn-file">
+                  Browse file
+                  <input type="file" name="image" id="imageInput" />
+                </span>
+              </div>
+              <div class="floating-label-form-group">
+                <input type="text" readonly="true" id="imageFileView" class="form-control">
+              </div>
             </div>
-            <div class="floating-label-form-group">
-              <input type="text" readonly="true" id="imageFileView" class="form-control">
+            <div class="photo-box">
+              <canvas></canvas>
             </div>
           </div>
-          <div class="photo-box"></div>
-        </div>
-        <div class="action-area col-xs-12">
-          <button class="md-btn">Next Step</button>
+          <div class="action-area col-xs-12">
+            <button class="md-btn pull-right" data-action="left" data-target="#choose-photo">Next Step</button>
+          </div>
         </div>
       </div>
     </section>
-    <section id="pick-glasses" class="container">
-      <div class="row">
-        <div class="col-xs-12 card-header">
-          <h2>Choose Glasses</h2>
-        </div>
-        <div class="col-md-12 col-xs-12">
-          <div id="glasses-canvas-container"></div>
-        </div>
-        <div class="glasses-selector col-xs-12">
-          <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-            <div class="col-xs-4 glass-box-container">
-              <a href="javascript:;" class="glass-box" data-target="blackglasses">
-                <img src="images/glasses/sample/blackglasses.jpg" alt="">
-              </a>
-              <span>Black</span>
-            </div>
-            <div class="col-xs-4 glass-box-container">
-              <a href="javascript:;" class="glass-box" data-target="purpleglasses">
-                <img src="images/glasses/sample/purpleglasses.jpg" alt="">
-              </a>
-              <span>Purple</span>
-            </div>
-            <div class="col-xs-4 glass-box-container">
-              <a href="javascript:;" class="glass-box" data-target="RanGlasses">
-                <img src="images/glasses/sample/RanGlasses.jpg" alt="">
-              </a>
-              <span>Ran</span>
+
+    <section id="pick-glasses" class="slide-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 card-header">
+            <h2>Choose Glasses</h2>
+          </div>
+          <div class="col-md-12 col-xs-12">
+            <div id="glasses-canvas-container"></div>
+          </div>
+          <div class="glasses-selector col-xs-12">
+            <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+              <div class="col-xs-4 glass-box-container selected">
+                <a href="javascript:;" class="glass-box" data-target="blackglasses">
+                  <img src="images/glasses/sample/blackglasses.jpg" alt="">
+                </a>
+                <span>Black</span>
+              </div>
+              <div class="col-xs-4 glass-box-container">
+                <a href="javascript:;" class="glass-box" data-target="purpleglasses">
+                  <img src="images/glasses/sample/purpleglasses.jpg" alt="">
+                </a>
+                <span>Purple</span>
+              </div>
+              <div class="col-xs-4 glass-box-container">
+                <a href="javascript:;" class="glass-box" data-target="RanGlasses">
+                  <img src="images/glasses/sample/RanGlasses.jpg" alt="">
+                </a>
+                <span>Ran</span>
+              </div>
             </div>
           </div>
+          <div class="action-area col-xs-12">
+            <button class="md-btn" data-action="right" data-target="#choose-photo">Previous Step</button>
+            <button class="md-btn pull-right" data-action="left" data-target="#pick-glasses">Next Step</button>
+          </div>
         </div>
-        <div class="action-area col-xs-12">
-          <button class="md-btn">Next Step</button>
+      </div>
+
+    </section>
+
+    <section id="show-result" class="slide-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 card-header">
+            <h2>Rock!</h2>
+          </div>
+          <div class="col-md-12 col-xs-12">
+            <div id="result-canvas-container" style="height:400px"></div>
+          </div>
+          <div class="action-area col-xs-12">
+            <button class="md-btn" data-action="right" data-target="#pick-glasses">Previous Step</button>
+          </div>
         </div>
       </div>
     </section>
