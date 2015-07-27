@@ -21,17 +21,6 @@
     }
 
   });
-
-  if (typeof wx !== 'undefined') {
-    var shareOptions = {
-      title: '易体验眼镜铺',
-      link: 'http://www.ytiyan.com/demo',
-      desc: '互联网+眼镜，让网购试戴起来',
-      imgUrl: 'http://www.ytiyan.com/images/new_logo.png'
-    };
-    wx.onMenuShareTimeline(shareOptions);
-    wx.onMenuShareAppMessage(shareOptions);
-  }
 })();
 
 /**

@@ -28,6 +28,9 @@ header {
 .slide-3 {
   z-index: 0; }
 
+.wx-content {
+  display: none; }
+
 #content section {
   width: 100%;
   background: #FFF;
