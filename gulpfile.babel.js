@@ -40,6 +40,9 @@ gulp.task('browserSync', () => {
 
 gulp.task('watch', () => {
   gulp.watch('public/sass/**/*.scss', ['styles']);
+  gulp.watch('public/scripts/**/*.js', () => {
+    browserSync.reload();
+  });
 });
 
 gulp.task('dev', () => {

@@ -45,7 +45,7 @@
       if (index < MIN_DEGREE_INDEX) {
         index = MAX_DEGREE_INDEX;
       }
-      this.ctx.drawImage(this.images[index], 0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.drawImage(this.images[index], 0, -1, this.canvas.width, this.canvas.height);
   };
 
   function appendCanvas() {
@@ -67,7 +67,6 @@
         clientX = e.originalEvent.clientX;
       }
       var index = Math.floor((clientX - me.middlePoint - offsetLeft) / me.gap);
-      console.log(index)
       me.draw(index);
     });
 

@@ -1,25 +1,34 @@
-.text-right {
-    text-align: right;
+$blue: #48A5FF;
+$white: #FFF;
+$gray-line: #555;
+
+@mixin line-sep() {
+  border-top: 1px solid rgba(0,0,0,.1);
 }
 
 header {
-  background-color: #48A5FF;
-  color: #FFF;
-  padding-top: 20px;
+  background-color: $blue;
+  color: $white;
+  padding-top: 12px;
   padding-bottom: 12px;
 
   .head-title {
-    margin-left: 15px;
+    text-align: center;
+    margin-top: 3px;
+    span {
+      line-height: 30px;
+      font-size: 26px;
+    }
   }
 
   .menu-links {
-    padding-top: 5px;
-
+    text-align: right;
+    padding-right: 20px;
     a {
       font-size: 30px;
-      color: #FFF;
+      color: $white;
       font-weight: 900;
-      margin: 15px;
+      line-height: 30px;
     }
   }
   .logo-wrapper {
@@ -30,14 +39,52 @@ header {
 }
 
 #content {
+  padding: 10px;
+  section {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .action-area {
+    @include line-sep();
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: right;
+  }
+}
+
+#choose-photo {
+  .upload-container {
+    padding: 20px;
+  }
+
+  .photo-box {
+    text-align: center;
+    padding-top: 20px;
+  }
+}
+
+#pick-glasses {
+
   #glasses-canvas-container {
     text-align: center;
   }
 
   .glasses-selector {
-    border-top: 1px solid #CC771E;
+    @include line-sep();
     padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
+
+    .glass-box-container {
+      border: 2px solid $white;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      &.selected {
+        border-color: $blue;
+      }
+    }
 
     .glass-box {
       display: block;
@@ -49,4 +96,75 @@ header {
       }
     }
   }
+
+}
+
+.line-sep {
+  @include line-sep();
+}
+
+.card-header {
+  text-align: center;
+  h2 {
+    margin-bottom: 15px;
+  }
+}
+
+.md-btn {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  height: 36px;
+  border-radius: 0;
+  background-color: $blue;
+  border: none;
+  color: $white;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+  outline: none;
+  padding: 8px 16px;
+}
+
+.floating-label-form-group {
+  font-size: 14px;
+  position: relative;
+  margin-bottom: 0;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid $gray-line;
+  input,
+  textarea {
+    z-index: 1;
+    position: relative;
+    padding-right: 0;
+    padding-left: 0;
+    border: none;
+    border-radius: 0;
+    font-size: 1.5em;
+    background: none;
+    box-shadow: none !important;
+    resize: none;
+    height: 36px;
+  }
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  padding: 6px;
+  cursor: text !important;
 }

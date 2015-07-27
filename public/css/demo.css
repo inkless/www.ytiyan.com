@@ -1,33 +1,124 @@
-.text-right {
-  text-align: right; }
-
 header {
   background-color: #48A5FF;
   color: #FFF;
-  padding-top: 20px;
+  padding-top: 12px;
   padding-bottom: 12px; }
   header .head-title {
-    margin-left: 15px; }
+    text-align: center;
+    margin-top: 3px; }
+    header .head-title span {
+      line-height: 30px;
+      font-size: 26px; }
   header .menu-links {
-    padding-top: 5px; }
+    text-align: right;
+    padding-right: 20px; }
     header .menu-links a {
       font-size: 30px;
       color: #FFF;
       font-weight: 900;
-      margin: 15px; }
+      line-height: 30px; }
   header .logo-wrapper img {
     max-height: 35px; }
 
-#content #glasses-canvas-container {
+#content {
+  padding: 10px; }
+  #content section {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+  #content .action-area {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: right; }
+
+#choose-photo .upload-container {
+  padding: 20px; }
+
+#choose-photo .photo-box {
+  text-align: center;
+  padding-top: 20px; }
+
+#pick-glasses #glasses-canvas-container {
   text-align: center; }
 
-#content .glasses-selector {
-  border-top: 1px solid #CC771E;
+#pick-glasses .glasses-selector {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 20px;
+  padding-bottom: 20px;
   text-align: center; }
-  #content .glasses-selector .glass-box {
+  #pick-glasses .glasses-selector .glass-box-container {
+    border: 2px solid #FFF;
+    padding-top: 10px;
+    padding-bottom: 10px; }
+    #pick-glasses .glasses-selector .glass-box-container.selected {
+      border-color: #48A5FF; }
+  #pick-glasses .glasses-selector .glass-box {
     display: block;
     width: 100%;
     overflow: hidden; }
-    #content .glasses-selector .glass-box img {
+    #pick-glasses .glasses-selector .glass-box img {
       width: 100%; }
+
+.line-sep {
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+
+.card-header {
+  text-align: center; }
+  .card-header h2 {
+    margin-bottom: 15px; }
+
+.md-btn {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  height: 36px;
+  border-radius: 0;
+  background-color: #48A5FF;
+  border: none;
+  color: #FFF;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  outline: none;
+  padding: 8px 16px; }
+
+.floating-label-form-group {
+  font-size: 14px;
+  position: relative;
+  margin-bottom: 0;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #555; }
+  .floating-label-form-group input,
+  .floating-label-form-group textarea {
+    z-index: 1;
+    position: relative;
+    padding-right: 0;
+    padding-left: 0;
+    border: none;
+    border-radius: 0;
+    font-size: 1.5em;
+    background: none;
+    box-shadow: none !important;
+    resize: none;
+    height: 36px; }
+
+.btn-file {
+  position: relative;
+  overflow: hidden; }
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block; }
+
+input[readonly] {
+  padding: 6px;
+  cursor: text !important; }
