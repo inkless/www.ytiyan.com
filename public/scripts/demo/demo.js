@@ -31,13 +31,14 @@
 
   var DEMO_AVATAR = "/images/glasses/avatar/1.jpg";
   var CANVAS_WIDTH_HEIGHT_RATIO = 1;
+  var IMAGE_MAX_WIDTH = 900;
 
   var canvasContainer = $(".photo-box"),
     canvas = canvasContainer.find("canvas")[0],
     ctx = canvas.getContext("2d"),
     containerWidth = canvasContainer.width(),
     loadImageOptions = {
-      maxWidth: containerWidth,
+      maxWidth: IMAGE_MAX_WIDTH,
       canvas: true
     };
 
