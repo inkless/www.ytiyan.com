@@ -52,9 +52,13 @@ function tryOn(req, res, next) {
       input: image.path,
       output: outputName,
       glasses: req.body.glasses
-    }, function(img) {
-      res.contentType('image/jpeg');
-      res.sendFile(outputName);
+    }, function() {
+      if (fs.existsSync(output)) {
+        res.contentType('image/jpeg');
+        res.sendFile(outputName);
+      } else {
+        return next(new Error("fail to find output"));
+      }
     }, function(err) {
       return next(new Error("process fail"));
     });
