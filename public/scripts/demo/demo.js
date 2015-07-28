@@ -45,6 +45,7 @@
 
   // show demo avatar
   drawImageInCanvas(DEMO_AVATAR, function() {
+    canvasContainer.show();
     saveBlob(canvas);
   });
 
@@ -88,13 +89,18 @@
   }
 
   function scaleRatio(width, height) {
+    var maxWidth = $("#choose-photo .action-area")[0].getBoundingClientRect().top
+      - $("#choose-photo .input-group")[0].getBoundingClientRect().bottom - 10;
+
+    maxWidth = Math.min(containerWidth, maxWidth);
+
     var imgWidthHeightRatio = width / height;
     // for wide image, we need to test width
     if (imgWidthHeightRatio > CANVAS_WIDTH_HEIGHT_RATIO) {
-      if (width > containerWidth) {
-        var ratio = width / containerWidth;
+      if (width > maxWidth) {
+        var ratio = width / maxWidth;
         return {
-          width: containerWidth,
+          width: maxWidth,
           height: height / ratio,
           ratio: ratio
         };
@@ -103,11 +109,11 @@
     // for narrow image, we need to test height
     else {
 
-      if (height > containerWidth) {
-        var ratio = height / containerWidth;
+      if (height > maxWidth) {
+        var ratio = height / maxWidth;
         return {
           width: width / ratio,
-          height: containerWidth,
+          height: maxWidth,
           ratio: ratio
         };
       }
