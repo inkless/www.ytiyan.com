@@ -64,7 +64,7 @@ header {
       position: relative;
       overflow: hidden;
       height: 500px;
-      @include big-shadow();
+      @include regular-shadow();
     }
 
     &.left {
@@ -96,7 +96,7 @@ header {
     }
 
     canvas {
-      @include big-shadow();
+      @include regular-shadow();
     }
   }
 }
@@ -148,7 +148,7 @@ header {
     padding-top: 20px;
 
     img {
-      @include big-shadow();
+      @include regular-shadow();
     }
   }
 }
@@ -189,7 +189,7 @@ header {
   background-color: $blue;
   border: none;
   color: $white;
-  @include small-shadow();
+  @include regular-shadow();
   outline: none;
   padding: 8px 16px;
   &:hover {
