@@ -45,7 +45,7 @@
 
   // show demo avatar
   drawImageInCanvas(DEMO_AVATAR, function() {
-    canvasContainer.show();
+    canvasContainer.css("visibility", "visible");
     saveBlob(canvas);
   });
 
