@@ -15,6 +15,9 @@
     height: 360
   };
 
+  // cache images according to path
+  var imagesCache = {};
+
   /**
    * @class CanvasRotation
    */
@@ -38,7 +41,12 @@
 
   CanvasRotation.prototype.setPath = function(url, prefix) {
     this.path = url + '/' + prefix;
-    this.images = preloadImages.call(this);
+    if (imagesCache[this.path]) {
+      this.images = imagesCache[this.path];
+      this.draw(0);
+    } else {
+      this.images = preloadImages.call(this);
+    }
   };
 
   CanvasRotation.prototype.draw = function(index) {
