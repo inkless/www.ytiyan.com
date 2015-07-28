@@ -22,10 +22,7 @@ app.use('/', routes);
 app.use(function(err, req, res, next) {
   if (err) {
     res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: {}
-    });
+    res.send('error');
   }
 });
 
