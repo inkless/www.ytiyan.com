@@ -203,10 +203,13 @@
       if (this.status == 200) {
         var blob = this.response;
         if (callback) {
+          hideLoading();
           callback(blob);
         }
+      } else {
+        hideLoading();
       }
-      hideLoading();
+
     };
     xhr.send(formData);
   }
