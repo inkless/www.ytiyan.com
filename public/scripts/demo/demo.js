@@ -215,10 +215,9 @@
     var container = $("#result-canvas-container"),
       containerWidth = container.width();
 
-    loadImage(blob, function(canvas) {
-      container.empty().append(canvas);
+    loadImage(blob, function(img) {
+      container.empty().append(img);
     }, {
-      canvas: true,
       maxWidth: containerWidth,
       maxHeight: containerWidth
     });
