@@ -219,16 +219,17 @@
   }
 
   var loadingZone = $("#show-result .loading");
+  var spinner = loadingZone.find(".mdl-spinner");
   var resultZone = $("#result-canvas-container");
   function showLoading() {
     loadingZone.show();
-    loadingZone.find(".md-spinner").addClass("is-active");
+    spinner.addClass("is-active");
     resultZone.hide();
   }
 
   function hideLoading() {
     loadingZone.hide();
-    loadingZone.find(".md-spinner").removeClass("is-active");
+    spinner.removeClass("is-active");
     resultZone.show();
   }
 
