@@ -1,32 +1,6 @@
-$blue: #48A5FF;
-$white: #FFF;
-$gray-line: #555;
-
-$phone-width: 480px;
-$tablet-width: 768px;
-$desktop-width: 1024px;
-
-@mixin phone {
-  @media (max-width: #{$phone-width}) {
-    @content;
-  }
-}
-
-@mixin tablet {
-  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media (min-width: #{$desktop-width}) {
-    @content;
-  }
-}
-
-@mixin line-sep() {
-  border-top: 1px solid rgba(0,0,0,.1);
-}
+@import "variables";
+@import "mixins";
+@import "spinner";
 
 header {
   background-color: $blue;
@@ -154,10 +128,19 @@ header {
 
 }
 
-#result-canvas-container {
-  text-align: center;
-  padding-top: 20px;
+#show-result {
+  .loading {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  #result-canvas-container {
+    text-align: center;
+    padding-top: 20px;
+  }
 }
+
 
 .line-sep {
   @include line-sep();

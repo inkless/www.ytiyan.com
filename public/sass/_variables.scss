@@ -1,0 +1,38 @@
+@import "functions";
+
+$blue: #48A5FF;
+$white: #FFF;
+$gray-line: #555;
+
+$phone-width: 480px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+/* ANIMATION */
+$animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$animation-curve-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1) !default;
+$animation-curve-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1) !default;
+
+$animation-curve-default: $animation-curve-fast-out-slow-in !default;
+
+/* ==========  Spinner  ========== */
+
+$spinner-color-1: rgb(66,165,245) !default;
+$spinner-color-2: rgb(244,67,54) !default;
+$spinner-color-3: rgb(253,216,53) !default;
+$spinner-color-4: rgb(76,175,80) !default;
+
+$spinner-single-color: rgb(63,81,181) !default;
+
+$spinner-size: 50px !default;
+$spinner-stroke-width: 5px !default;
+
+// Amount of circle the arc takes up.
+$spinner-arc-size: 270deg;
+// Time it takes to expand and contract arc.
+$spinner-arc-time: 1333ms;
+// How much the start location of the arc should rotate each time.
+$spinner-arc-start-rot: 216deg;
+
+$spinner-duration: 360 * $spinner-arc-time / (
+    strip-units($spinner-arc-start-rot + (360deg - $spinner-arc-size)));

@@ -182,6 +182,7 @@
     formData.append('glasses', yData.glasses);
     formData.append('token', '123$Demo');
 
+    showLoading();
     fetchBlob("/api/try-on", formData, function(blob) {
       rockImage(blob);
     });
@@ -199,6 +200,7 @@
           callback(blob);
         }
       }
+      hideLoading();
     };
     xhr.send(formData);
   }
@@ -214,6 +216,20 @@
       maxWidth: containerWidth,
       maxHeight: containerWidth
     });
+  }
+
+  var loadingZone = $("#show-result .loading");
+  var resultZone = $("#result-canvas-container");
+  function showLoading() {
+    loadingZone.show();
+    loadingZone.find(".md-spinner").addClass("is-active");
+    resultZone.hide();
+  }
+
+  function hideLoading() {
+    loadingZone.hide();
+    loadingZone.find(".md-spinner").removeClass("is-active");
+    resultZone.show();
   }
 
 })();
