@@ -192,40 +192,38 @@
     formData.append('token', '123$Demo');
 
     showLoading();
-    fetchBlob("/api/try-on", formData, function(blob) {
-      rockImage(blob);
+    fetchResult("/api/try-on", formData, function(data) {
+      rockImage(data.url);
     });
   }
 
-  function fetchBlob(uri, formData, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', uri, true);
-    xhr.responseType = 'blob';
-
-    xhr.onload = function(e) {
-      if (this.status == 200) {
-        var blob = this.response;
-        if (callback) {
-          hideLoading();
-          callback(blob);
-        }
-      } else {
+  function fetchResult(uri, formData, callback) {
+    $.ajax({
+      url: uri,
+      type: 'POST',
+      dataType: 'json',
+      cache: false,
+      processData: false,
+      data: formData,
+      contentType: false,
+      success: function(data) {
+        callback(data);
+      },
+      complete: function() {
         hideLoading();
       }
-
-    };
-    xhr.send(formData);
+    });
   }
 
-  function rockImage(blob) {
+  function rockImage(url) {
     var container = $("#result-canvas-container"),
-      containerWidth = container.width();
+      maxWidth = container.parent().width();
 
-    loadImage(blob, function(img) {
+    loadImage(url, function(img) {
       container.empty().append(img);
     }, {
-      maxWidth: containerWidth,
-      maxHeight: containerWidth
+      maxWidth: maxWidth,
+      maxHeight: maxWidth
     });
 
     // push history state

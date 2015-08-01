@@ -34,8 +34,7 @@ function tryOn(req, res, next) {
   }
 
   if (process.env.NODE_ENV === "development") {
-    res.contentType('image/jpeg');
-    res.sendFile(image.path);
+    res.status(200).json(getOutputImageUrl(image.path, image.filename));
     return;
   }
 
@@ -54,8 +53,7 @@ function tryOn(req, res, next) {
       glasses: req.body.glasses
     }, function() {
       if (fs.existsSync(outputName)) {
-        res.contentType('image/jpeg');
-        res.sendFile(outputName);
+        res.status(200).json(getOutputImageUrl(outputName, image.filename));
       } else {
         return next(new Error("fail to find output"));
       }
@@ -64,6 +62,12 @@ function tryOn(req, res, next) {
     });
 
   });
+}
+
+function getOutputImageUrl(srcPath, imageName) {
+  var destImg = '/result/' + imageName + '.jpg';
+    fs.renameSync(srcPath, 'public' + destImg);
+  return {url: destImg};
 }
 
 function requestProcessedImage(req, success, error) {
