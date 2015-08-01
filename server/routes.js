@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
   res.sendFile('index.html', { root: STATIC_DIR });
 });
 // serve demo
-router.get('/demo', function(req, res) {
+router.get('/demo/?*', function(req, res) {
   res.sendFile('demo.html', { root: STATIC_DIR });
 });
 //serve api
