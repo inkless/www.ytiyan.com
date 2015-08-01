@@ -9,6 +9,10 @@ var PORT = 3000;
 
 var app = express();
 
+// use ejs engine
+app.set('views', 'views');
+app.set('view engine', 'ejs');
+
 // Serve public folder
 app.use(express.static(STATIC_DIR, {
   index: false
@@ -22,7 +26,7 @@ app.use('/', routes);
 app.use(function(err, req, res, next) {
   if (err) {
     res.status(err.status || 500);
-    res.send('error');
+    res.render('error');
   }
 });
 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>易体验-眼镜铺 Demo</title>
+  <meta name="description" content="互联网+眼镜，让网购试戴起来">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- build: lib/css -->
+  <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/ionicons/css/ionicons.min.css">
+  <!-- endbuild -->
+
+  <!-- build: css -->
+  <link rel="stylesheet" href="/css/demo.css"></head>
+  <!-- endbuild -->
+
+<body>
+  <header id="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-2 logo-wrapper">
+          <img src="/images/new_logo.png" alt="">
+        </div>
+        <div class="col-xs-8 head-title">
+          <span>DEMO</span>
+        </div>
+        <div class="col-xs-2 menu-links">
+          <a href="/">
+            <i class="ion-ios-home-outline"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div id="content">
+    <section id="show-result" class="slide-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 card-header">
+            <h2>Rock!</h2>
+          </div>
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <div class="loading" style="display:none;">
+              <div class="mdl-spinner mdl-js-spinner is-upgraded" data-upgraded=",MaterialSpinner"><div class="mdl-spinner__layer mdl-spinner__layer-1"><div class="mdl-spinner__circle-clipper mdl-spinner__left"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__gap-patch"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__circle-clipper mdl-spinner__right"><div class="mdl-spinner__circle"></div></div></div><div class="mdl-spinner__layer mdl-spinner__layer-2"><div class="mdl-spinner__circle-clipper mdl-spinner__left"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__gap-patch"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__circle-clipper mdl-spinner__right"><div class="mdl-spinner__circle"></div></div></div><div class="mdl-spinner__layer mdl-spinner__layer-3"><div class="mdl-spinner__circle-clipper mdl-spinner__left"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__gap-patch"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__circle-clipper mdl-spinner__right"><div class="mdl-spinner__circle"></div></div></div><div class="mdl-spinner__layer mdl-spinner__layer-4"><div class="mdl-spinner__circle-clipper mdl-spinner__left"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__gap-patch"><div class="mdl-spinner__circle"></div></div><div class="mdl-spinner__circle-clipper mdl-spinner__right"><div class="mdl-spinner__circle"></div></div></div></div>
+            </div>
+            <div id="result-canvas-container">
+              <img src="<%=imgUrl%>" alt="">
+            </div>
+          </div>
+          <div class="action-area col-xs-12">
+            <a class="md-btn pull-right" href="/demo">Start Over</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- build: js -->
+  <!-- endbuild -->
+  <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript">
+  (function() {
+    var sectionHeight = $(window).height() - 80;
+    $("section .container").css("height", sectionHeight);
+  })();
+  </script>
+</body>
+</html>

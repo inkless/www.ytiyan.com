@@ -6,11 +6,17 @@ var router = express.Router();
 
 // serve /
 router.get('/', function(req, res) {
-  res.sendFile('index.html', { root: STATIC_DIR });
+  res.render('index');
 });
 // serve demo
-router.get('/demo/?*', function(req, res) {
-  res.sendFile('demo.html', { root: STATIC_DIR });
+router.get('/demo', function(req, res) {
+  res.render('demo');
+});
+// serve demo/result
+router.get('/demo/result/:img_path', function(req, res) {
+  res.render('demo_result', {
+    imgUrl: '/result/' + req.params.img_path
+  });
 });
 //serve api
 router.use('/api', api);

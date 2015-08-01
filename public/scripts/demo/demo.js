@@ -4,9 +4,6 @@
 ;(function() {
   'use strict';
 
-  // set current url to `demo`
-  window.history.pushState(null, null, '/demo');
-
   window.yData = {};
 
   var sectionHeight = $(window).height() - 80;
@@ -227,8 +224,7 @@
     });
 
     // push history state
-    window.history.pushState(null, null, '/demo/result');
-    $(".wx-content").remove();
+    window.history.pushState(null, null, '/demo' + url);
   }
 
   var loadingZone = $("#show-result .loading");
