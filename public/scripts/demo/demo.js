@@ -225,6 +225,7 @@
 
     // push history state
     window.history.pushState(null, null, '/demo' + url);
+    $(".wx-content img")[0].src = url;
   }
 
   var loadingZone = $("#show-result .loading");
