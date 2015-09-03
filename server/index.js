@@ -2,12 +2,15 @@
 require('dotenv').load();
 
 var express = require('express');
+var cors = require('cors');
 var routes = require('./routes');
 
 var STATIC_DIR = "public";
 var PORT = 3000;
 
 var app = express();
+
+app.use(cors());
 
 // use ejs engine
 app.set('views', 'views');

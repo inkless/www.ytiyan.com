@@ -5,6 +5,7 @@
   "author": "Guangda Zhang <zhangxiaoyu9350@gmail.com>",
   "version": "0.0.1",
   "dependencies": {
+    "cors": "^2.7.1",
     "dotenv": "^1.2.0",
     "ejs": "^2.3.3",
     "express": "^4.13.1",
